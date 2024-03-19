@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+  <link rel="stylesheet" href="estilos.css">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encriptador de texto</title>
+
+</head>
+<body>
+<img src="imagenes/Logo.png"
+  class ="Logo">
+<div class="container">
+  <textarea id="text" placeholder="Ingrese el texto aqui"></textarea>
+  <button onclick="encrypt()">Encriptar</button>
+  <button onclick="decrypt()">Desencriptar</button>
+  <button onclick="copyText()">Copiar al portapapeles</button>
+  <div id="result" aria-label="Texto encriptado"></div>
+</div>
+
+<script>
+function encrypt() {
+  const text = document.getElementById('text').value.toLowerCase();
+  const encryptedText = text
+    .replace(/e/g, 'enter')
+    .replace(/i/g, 'imes')
+    .replace(/a/g, 'ai')
+    .replace(/o/g, 'ober')
+    .replace(/u/g, 'ufat');
+  document.getElementById('result').innerText = encryptedText;
+}
+
+function decrypt() {
+  const text = document.getElementById('text').value.toLowerCase();
+  const decryptedText = text
+    .replace(/enter/g, 'e')
+    .replace(/imes/g, 'i')
+    .replace(/ai/g, 'a')
+    .replace(/ober/g, 'o')
+    .replace(/ufat/g, 'u');
+  document.getElementById('result').innerText = decryptedText;
+}
+
+function copyText() {
+  const resultText = document.getElementById('result');
+  const textArea = document.createElement('textarea');
+  textArea.value = resultText.innerText;
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textArea);
+  alert('Texto copiado al portapapeles');
+}
+</script>
+
+<footer style="text-align: center; margin-top: 20px;">
+  Desarrollado por [MJM] &copy; 2024
+</footer>
+
+</body>
+</html>
